@@ -19,4 +19,4 @@ React, TypeScript, Vite y Tailwind CSS. Las imágenes y videos (logos, capturas 
 
 ## Despliegue
 
-El push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio y lo publica en GitHub Pages vía GitHub Actions. En **Settings → Pages** de este repo, la fuente debe estar configurada como **GitHub Actions** (no "Deploy from a branch").
+El push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio y publica el resultado en la rama `gh-pages`. En **Settings → Pages** de este repo, la fuente debe estar en **Deploy from a branch → `gh-pages` → / (root)**.
