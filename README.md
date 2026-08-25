@@ -19,4 +19,4 @@ React, TypeScript, Vite y Tailwind CSS. Las imágenes y videos (logos, capturas 
 
 ## Despliegue
 
-El push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio y publica el resultado en la rama `gh-pages`. En **Settings → Pages** de este repo, la fuente debe estar en **Deploy from a branch → `gh-pages` → / (root)**.
+Cada push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio con Vite y commitea el resultado (`index.html`, `assets/`, `hero/`, `logos/`, `shots/`, `video/`) directamente en la raíz de `main`, con el mensaje `[skip ci]` para no volver a dispararse a sí mismo. En **Settings → Pages** de este repo, la fuente es **Deploy from a branch → `main` → / (root)**.
