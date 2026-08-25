@@ -10,8 +10,6 @@
 </head>
 <body>
 
-<div class="bg-grid" aria-hidden="true"></div>
-
 <header class="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-brand">NR<span>.</span></a>
@@ -29,17 +27,41 @@
 
   <section id="top" class="hero">
     <div class="hero-inner">
-      <p class="eyebrow reveal">Full Stack Developer · Concordia, Entre Ríos, Argentina</p>
-      <h1 class="reveal">Hola, soy <span class="accent">Nazareno Rodríguez</span></h1>
-      <p class="hero-sub reveal">
-        Construyo software de gestión — ERPs y SaaS — para negocios reales.
-        Estudiante de la <strong>Tecnicatura Universitaria en Programación (UTN)</strong>,
-        creador de <strong>Zylos ERP</strong>, <strong>Quiosquito</strong> y <strong>Glamdo</strong>.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
-        <a href="https://github.com/nazarenorodriguez013" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+
+      <div class="hero-text">
+        <p class="eyebrow reveal">Full Stack Developer · Concordia, Entre Ríos, Argentina</p>
+        <h1 class="reveal">Hola, soy <span class="accent">Nazareno Rodríguez</span></h1>
+        <p class="hero-sub reveal">
+          Construyo software de gestión — ERPs y SaaS — para negocios reales.
+          Estudiante de la <strong>Tecnicatura Universitaria en Programación (UTN)</strong>,
+          creador de <strong>Zylos ERP</strong>, <strong>Quiosquito</strong> y <strong>Glamdo</strong>.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="https://github.com/nazarenorodriguez013" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        </div>
       </div>
+
+      <div class="hero-3d" id="hero3d" aria-hidden="true">
+        <div class="particles" id="particles"></div>
+        <div class="stage">
+          <div class="tilt" id="tilt">
+            <div class="orbit">
+              <div class="orbit-card card-zylos">
+                <img src="img/logos/zylos.png" alt="">
+              </div>
+              <div class="orbit-card card-glamdo">
+                <img class="glamdo-icon" src="img/logos/glamdo-g.svg" alt="">
+                <span>Glamdo</span>
+              </div>
+              <div class="orbit-card card-quiosquito">
+                <img src="img/logos/quiosquito-badge.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -51,8 +73,11 @@
 
         <article class="project reveal">
           <div class="project-head">
-            <h3>Glamdo</h3>
-            <span class="project-tag">SaaS</span>
+            <img class="project-logo" src="img/logos/glamdo-g.svg" alt="Logo de Glamdo">
+            <div>
+              <h3>Glamdo</h3>
+              <span class="project-tag">SaaS · Peluquerías y barberías</span>
+            </div>
           </div>
           <p>
             SaaS de gestión para peluquerías y barberías: turnos con reserva pública, fichas de clientes
@@ -61,11 +86,17 @@
             turnos automáticamente. Multi-tenant con suscripción, integraciones con Google Calendar y
             Mercado Pago.
           </p>
+          <ol class="project-steps">
+            <li>El cliente reserva su turno online o por WhatsApp.</li>
+            <li>El negocio gestiona caja, stock y comisiones de cada peluquero desde el panel.</li>
+            <li>Se factura y se fideliza al cliente con puntos, tarjetas de regalo y campañas.</li>
+          </ol>
           <ul class="project-chips">
             <li>Multi-tenant</li>
             <li>Bot de WhatsApp</li>
             <li>Mercado Pago</li>
             <li>Google Calendar</li>
+            <li>Node.js + React</li>
           </ul>
           <div class="project-links">
             <a href="https://www.glamdo.com.ar" target="_blank" rel="noopener">Sitio en vivo ↗</a>
@@ -74,8 +105,11 @@
 
         <article class="project reveal">
           <div class="project-head">
-            <h3>Quiosquito</h3>
-            <span class="project-tag">POS</span>
+            <img class="project-logo project-logo-quiosquito" src="img/logos/quiosquito-badge.png" alt="Logo de Quiosquito">
+            <div>
+              <h3>Quiosquito</h3>
+              <span class="project-tag">POS · Kioscos y minoristas</span>
+            </div>
           </div>
           <p>
             Sistema de gestión para kioscos y comercios minoristas: punto de venta con escáner de
@@ -85,6 +119,11 @@
             con transferencias de stock entre sucursales. App de escritorio (Windows/macOS) y web,
             con Mercado Pago integrado.
           </p>
+          <ol class="project-steps">
+            <li>Vendé escaneando el código de barras del producto.</li>
+            <li>Facturá al instante con AFIP (Factura B o Remito).</li>
+            <li>Controlá stock, vencimientos y sucursales desde el dashboard.</li>
+          </ol>
           <ul class="project-chips">
             <li>AFIP</li>
             <li>App de escritorio</li>
@@ -99,8 +138,11 @@
 
         <article class="project reveal">
           <div class="project-head">
-            <h3>Zylos ERP</h3>
-            <span class="project-tag">ERP</span>
+            <img class="project-logo project-logo-zylos" src="img/logos/zylos.png" alt="Logo de Zylos ERP">
+            <div>
+              <h3>Zylos ERP</h3>
+              <span class="project-tag">ERP · Distribuidoras y pymes</span>
+            </div>
           </div>
           <p>
             Sistema de gestión multiempresa (multi-tenant) para distribuidoras y pymes: ventas, caja,
@@ -108,12 +150,22 @@
             Incluye panel web, app móvil para vendedores (React Native) y un asistente con IA que
             responde preguntas sobre el negocio en lenguaje natural consultando datos reales.
           </p>
+          <ol class="project-steps">
+            <li>Cargá pedidos y ventas desde el panel o la app del vendedor.</li>
+            <li>Facturá electrónicamente integrado con AFIP.</li>
+            <li>Preguntale al asistente con IA cómo viene el negocio.</li>
+          </ol>
           <ul class="project-chips">
             <li>Multi-tenant</li>
             <li>Asistente IA</li>
             <li>App móvil</li>
             <li>AFIP</li>
+            <li>PostgreSQL</li>
           </ul>
+          <figure class="project-shot">
+            <img src="img/shots/zylos-login.png" alt="Pantalla de login de Zylos ERP">
+            <figcaption>Login de Zylos ERP</figcaption>
+          </figure>
           <div class="project-links">
             <span class="project-private">Código privado</span>
           </div>
