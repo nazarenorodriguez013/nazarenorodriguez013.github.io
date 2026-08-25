@@ -97,6 +97,29 @@ const workflow = [
   },
 ];
 
+const contactQuestions = [
+  {
+    name: "tipo_proyecto",
+    question: "¿Qué tipo de proyecto es?",
+    options: ["Página web", "Sistema de gestión", "Integración o API", "Automatización", "Otro"],
+  },
+  {
+    name: "presupuesto",
+    question: "¿Qué presupuesto estimás?",
+    options: ["Menos de $500.000", "$500.000 - $1.500.000", "Más de $1.500.000", "Todavía no sé"],
+  },
+  {
+    name: "urgencia",
+    question: "¿Con qué urgencia lo necesitás?",
+    options: ["Es urgente", "En el próximo mes", "Sin apuro, estoy explorando"],
+  },
+  {
+    name: "punto_partida",
+    question: "¿Desde dónde arrancamos?",
+    options: ["Arranco de cero", "Ya tengo algo para mejorar", "Necesito integrar algo existente"],
+  },
+];
+
 function Hero3D() {
   return (
     <div className="nr-hero-stage" aria-hidden="true">
@@ -334,6 +357,22 @@ export default function Home() {
               <input type="hidden" name="subject" value="Consulta desde el portafolio" />
               <input type="hidden" name="redirect" value="https://nazarenorodriguez013.github.io/gracias" />
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+              {contactQuestions.map((q) => (
+                <fieldset className="chip-field" key={q.name}>
+                  <legend>{q.question}</legend>
+                  <div className="chip-group">
+                    {q.options.map((opt, i) => {
+                      const id = `${q.name}-${i}`;
+                      return (
+                        <div className="chip" key={opt}>
+                          <input type="radio" id={id} name={q.name} value={opt} />
+                          <label htmlFor={id}>{opt}</label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+              ))}
               <label>Nombre<input required name="name" placeholder="Cómo te llamas" /></label>
               <label>Email<input required type="email" name="email" placeholder="tu@equipo.com" /></label>
               <label>Contexto<textarea required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." /></label>
