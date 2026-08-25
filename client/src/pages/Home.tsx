@@ -2,7 +2,7 @@
  * Estilo Terminal de autor: composición editorial oscura, rail técnico y verde señal
  * como indicador semántico. La portada 3D debe respirar a la derecha y el texto no se centra.
  */
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -91,68 +91,17 @@ const workflow = [
 ];
 
 function Hero3D() {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const tiltRef = useRef<HTMLDivElement>(null);
-  const particlesRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const particlesEl = particlesRef.current;
-
-    if (particlesEl && !reduceMotion) {
-      const COUNT = 22;
-      for (let i = 0; i < COUNT; i++) {
-        const p = document.createElement("span");
-        p.className = "hero-3d-particle";
-        const size = 2 + Math.random() * 3;
-        p.style.left = Math.random() * 100 + "%";
-        p.style.width = size + "px";
-        p.style.height = size + "px";
-        p.style.setProperty("--p-op", (0.25 + Math.random() * 0.45).toFixed(2));
-        p.style.animationDuration = 9 + Math.random() * 10 + "s";
-        p.style.animationDelay = Math.random() * -18 + "s";
-        particlesEl.appendChild(p);
-      }
-    }
-
-    const stage = stageRef.current;
-    const tilt = tiltRef.current;
-    if (!stage || !tilt || reduceMotion || !window.matchMedia("(hover: hover)").matches) return;
-
-    const onMove = (e: MouseEvent) => {
-      const rect = stage.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      tilt.style.transform = `rotateY(${x * 22}deg) rotateX(${-y * 22}deg)`;
-    };
-    const onLeave = () => {
-      tilt.style.transform = "rotateY(0deg) rotateX(0deg)";
-    };
-    stage.addEventListener("mousemove", onMove);
-    stage.addEventListener("mouseleave", onLeave);
-    return () => {
-      stage.removeEventListener("mousemove", onMove);
-      stage.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
   return (
-    <div className="hero-3d-stage" ref={stageRef}>
-      <div className="hero-3d-particles" ref={particlesRef} />
-      <div className="hero-3d-tilt" ref={tiltRef}>
-        <div className="hero-3d-orbit">
-          <div className="hero-3d-card card-glamdo">
-            <img src="/logos/glamdo.svg" alt="" />
-            <span>Glamdo</span>
-          </div>
-          <div className="hero-3d-card card-quiosquito">
-            <img src="/logos/quiosquito.svg" alt="" />
-            <span>Quiosquito</span>
-          </div>
-          <div className="hero-3d-card card-zylos">
-            <img src="/logos/zylos.png" alt="" />
-          </div>
+    <div className="nr-hero-stage" aria-hidden="true">
+      <div className="nr-hero-grid" />
+      <div className="nr-monogram-scene">
+        <div className="nr-monogram-shadow" />
+        <div className="nr-monogram-panel">
+          <img src="/logos/nr-mark.svg" alt="" />
+          <span className="nr-monogram-caption">N · R</span>
         </div>
+        <div className="nr-monogram-edge" />
+        <span className="nr-scene-label">PERSONAL MARK</span>
       </div>
     </div>
   );
