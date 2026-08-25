@@ -1,7 +1,16 @@
-# nazarenorodriguez013.github.io
+# Nazareno Rodríguez — Portfolio
 
-Portfolio personal de Nazareno Rodríguez, publicado con GitHub Pages en
-[nazarenorodriguez013.github.io](https://nazarenorodriguez013.github.io).
+Portafolio de **Nazareno Rodríguez**, desarrollador full stack de Concordia, Entre Ríos, Argentina. El sitio presenta los proyectos **Glamdo**, **Quiosquito** y **Zylos ERP**, además de su stack tecnológico y vías de contacto.
 
-Sitio estático (HTML/CSS/JS sin frameworks) con presentación personal,
-proyectos (Zylos ERP, Quiosquito, Glamdo), stack tecnológico y contacto.
+## Desarrollo local
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Para validar los tipos, ejecutar `pnpm check`. Para preparar una compilación de producción, ejecutar `pnpm build`.
+
+## Stack
+
+React, TypeScript, Vite y Tailwind CSS. Los recursos visuales se alojan fuera del repositorio y se sirven desde rutas administradas del proyecto.
