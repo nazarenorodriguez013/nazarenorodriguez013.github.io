@@ -211,6 +211,7 @@ export default function Home() {
           <div className="section-content">
             <div className="section-heading">
               <div>
+                <p className="eyebrow">// TRABAJO</p>
                 <h2 id="work-title">Softwares de<br /><em>Gestión Comercial</em></h2>
               </div>
               <p className="heading-note">Sistemas completos, facturación electrónica ARCA, inventario, datos e interfaces simples para tener tu negocio bajo control.</p>
@@ -252,6 +253,7 @@ export default function Home() {
           <div className="section-content skills-content">
             <div className="section-heading compact-heading">
               <div>
+                <p className="eyebrow">// STACK</p>
                 <h2 id="skills-title">Herramientas más<br /><em>utilizadas para el desarrollo.</em></h2>
               </div>
               <div className="skills-pullquote"><Terminal size={18} /><span>“Conectando distintas tecnologías según la necesidad de cada cliente.”</span></div>
