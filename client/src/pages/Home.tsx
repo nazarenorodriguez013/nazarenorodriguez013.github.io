@@ -12,10 +12,18 @@ import {
   Linkedin,
   Mail,
   Menu,
+  MessageCircle,
   Sparkles,
   Terminal,
   X,
 } from "lucide-react";
+
+// Clave gratuita de https://web3forms.com — pegar acá antes de publicar
+// para que el formulario de contacto envíe mensajes de verdad.
+const WEB3FORMS_ACCESS_KEY = "TU_ACCESS_KEY_DE_WEB3FORMS";
+
+// Número de WhatsApp con código de país, sin espacios ni signos (ej. 5493451234567).
+const WHATSAPP_NUMBER = "TU_NUMERO_DE_WHATSAPP";
 
 const projects = [
   {
@@ -109,6 +117,7 @@ function NavLink({ href, children }: { href: string; children: string }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const copyEmail = async () => {
     await navigator.clipboard?.writeText("nazarenorodriguez013@gmail.com");
@@ -116,15 +125,37 @@ export default function Home() {
     window.setTimeout(() => setCopied(false), 1800);
   };
 
-  const handleContact = (event: React.FormEvent<HTMLFormElement>) => {
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=nazarenorodriguez013@gmail.com&su=${encodeURIComponent(
+    "Consulta desde el portafolio",
+  )}&body=${encodeURIComponent("Hola Nazareno, te escribo porque...")}`;
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    "Hola Nazareno, te escribo porque...",
+  )}`;
+
+  const handleContact = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = form.get("name")?.toString() || "";
-    const email = form.get("email")?.toString() || "";
-    const message = form.get("message")?.toString() || "";
-    window.location.href = `mailto:nazarenorodriguez013@gmail.com?subject=${encodeURIComponent(
-      `Consulta desde el portafolio — ${name}`,
-    )}&body=${encodeURIComponent(`De: ${name} (${email})\n\n${message}`)}`;
+    setFormStatus("sending");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    data.append("access_key", WEB3FORMS_ACCESS_KEY);
+    data.append("subject", `Consulta desde el portafolio — ${data.get("name")}`);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      const result = await res.json();
+      if (result.success) {
+        setFormStatus("sent");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -316,15 +347,23 @@ export default function Home() {
           <div className="contact-layout">
             <div className="contact-copy">
               <p className="eyebrow"><Sparkles size={14} /> hablemos de software</p>
-              <h2 id="contact-title">¿Tenés un negocio<br />que necesita un<br /><em>sistema?</em></h2>
-              <p>¿Charlamos sobre un proyecto o una oportunidad? Escribime y contame qué necesitás resolver.</p>
-              <button className="copy-email" onClick={copyEmail}><Mail size={16} /> nazarenorodriguez013@gmail.com <Copy size={14} /><span>{copied ? "Copiado" : "Copiar"}</span></button>
+              <h2 id="contact-title">¿Tenés algún<br />proyecto<br /><em>en mente?</em></h2>
+              <p>Contame de qué se trata y charlamos cómo lo llevamos adelante.</p>
+              <div className="contact-actions">
+                <button className="copy-email" onClick={copyEmail}><Mail size={16} /> nazarenorodriguez013@gmail.com <Copy size={14} /><span>{copied ? "Copiado" : "Copiar"}</span></button>
+                <a className="contact-alt-action" href={gmailComposeUrl} target="_blank" rel="noreferrer"><Mail size={15} /> Escribir por Gmail</a>
+                <a className="contact-alt-action" href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={15} /> WhatsApp</a>
+              </div>
             </div>
             <form className="contact-form" onSubmit={handleContact}>
               <label>Nombre<input required name="name" placeholder="Cómo te llamas" /></label>
               <label>Email<input required type="email" name="email" placeholder="tu@equipo.com" /></label>
               <label>Contexto<textarea required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." /></label>
-              <button className="primary-action form-action" type="submit">Escribir a Nazareno <ArrowUpRight size={18} /></button>
+              <button className="primary-action form-action" type="submit" disabled={formStatus === "sending"}>
+                {formStatus === "sending" ? "Enviando..." : "Escribir a Nazareno"} <ArrowUpRight size={18} />
+              </button>
+              {formStatus === "sent" && <p className="form-status form-status-ok">Mensaje enviado, te respondo pronto.</p>}
+              {formStatus === "error" && <p className="form-status form-status-error">No se pudo enviar. Probá por Gmail, WhatsApp o copiando el mail.</p>}
             </form>
           </div>
           <div className="footer-bottom">
