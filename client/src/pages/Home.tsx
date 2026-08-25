@@ -288,14 +288,13 @@ export default function Home() {
             </div>
             <div className="article-list">
               {workflow.map((article, index) => (
-                <a href="https://github.com/nazarenorodriguez013" target="_blank" rel="noreferrer" className="article-row" key={article.title}>
+                <div className="article-row" key={article.title}>
                   <span className="article-count">0{index + 1}</span>
                   <p className="article-title">{article.title}</p>
                   <span className="article-tag">{article.tag}</span>
                   <span className="article-meta">{article.read}</span>
-                  <ArrowUpRight className="article-arrow" size={18} />
                   <span className="article-date">{article.date}</span>
-                </a>
+                </div>
               ))}
             </div>
           </div>
