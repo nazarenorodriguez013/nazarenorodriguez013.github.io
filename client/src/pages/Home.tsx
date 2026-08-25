@@ -106,12 +106,18 @@ const contactQuestions = [
   {
     name: "presupuesto",
     question: "¿Qué presupuesto estimás?",
-    options: ["Menos de $500.000", "$500.000 - $1.500.000", "Más de $1.500.000", "Todavía no sé"],
+    options: [
+      "Menos de $500.000",
+      "$500.000 - $1.500.000",
+      "Más de $1.500.000",
+      "Todavía no sé",
+      "Prefiero definirlo después",
+    ],
   },
   {
-    name: "urgencia",
-    question: "¿Con qué urgencia lo necesitás?",
-    options: ["Es urgente", "En el próximo mes", "Sin apuro, estoy explorando"],
+    name: "tiempo_desarrollo",
+    question: "¿Cuánto tiempo estimás para el desarrollo?",
+    options: ["Menos de 1 mes", "1 a 3 meses", "Más de 3 meses", "No tengo estimado"],
   },
   {
     name: "punto_partida",
