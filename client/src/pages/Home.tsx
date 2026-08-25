@@ -6,16 +6,12 @@ import { useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
-  Braces,
-  Code2,
   Copy,
-  Database,
   Github,
   Layers3,
   Linkedin,
   Mail,
   Menu,
-  ServerCog,
   Sparkles,
   Terminal,
   X,
@@ -203,15 +199,6 @@ export default function Home() {
             <div className="hero-orbit orbit-two" />
             <div className="hero-art-meta">
               <span>RENDER_01</span><span>NR / PERSONAL MARK</span><span>2026</span>
-            </div>
-          </div>
-          <div className="tech-strip reveal-up">
-            <span>// construido con</span>
-            <div className="tech-list">
-              <span><Braces size={15} /> TypeScript</span>
-              <span><Code2 size={15} /> React</span>
-              <span><Database size={15} /> Postgres</span>
-              <span><ServerCog size={15} /> Cloud</span>
             </div>
           </div>
         </section>
