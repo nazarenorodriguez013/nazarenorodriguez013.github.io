@@ -151,10 +151,10 @@ export default function Home() {
         </div>
         <div className="rail-socials">
           <a href="https://github.com/nazarenorodriguez013" aria-label="GitHub de Nazareno Rodríguez" target="_blank" rel="noreferrer">
-            <Github size={17} />
+            <Github size={24} />
           </a>
           <a href="https://www.linkedin.com/in/nazarenorodriguez013" aria-label="LinkedIn de Nazareno Rodríguez" target="_blank" rel="noreferrer">
-            <Linkedin size={17} />
+            <Linkedin size={24} />
           </a>
         </div>
       </aside>
@@ -312,7 +312,7 @@ export default function Home() {
         </section>
 
         <footer id="contact" className="contact-footer section-grid" aria-labelledby="contact-title">
-          <div className="footer-topline"><span>// 04 — contacto</span><span>Disponible para proyectos de software</span></div>
+          <div className="footer-topline"><span className="footer-eyebrow">// contacto</span><span>Disponible para proyectos de software</span></div>
           <div className="contact-layout">
             <div className="contact-copy">
               <p className="eyebrow"><Sparkles size={14} /> hablemos de software</p>
@@ -330,6 +330,7 @@ export default function Home() {
           <div className="footer-bottom">
             <a className="footer-brand" href="#top" aria-label="Nazareno Rodríguez, volver al inicio"><img src="/logos/nr-mark.svg" alt="" /><span>Nazareno<br />Rodríguez<i /></span></a>
             <a className="resume-link" href="https://github.com/nazarenorodriguez013" target="_blank" rel="noreferrer"><Github size={16} /> Perfil en GitHub</a>
+            <a className="resume-link" href="https://www.linkedin.com/in/nazarenorodriguez013" target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn</a>
             <span>© 2026 Nazareno Rodríguez</span>
             <span>Diseñado y programado con intención.</span>
           </div>
