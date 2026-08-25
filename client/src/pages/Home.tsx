@@ -71,13 +71,13 @@ const skills = [
 const workflow = [
   {
     date: "Producto",
-    title: "ERPs y SaaS pensados para operar todos los días",
+    title: "ERPs, SaaS, páginas web, APIs y otros productos a medida",
     tag: "Sistema",
     read: "Idea → producción",
   },
   {
     date: "Integraciones",
-    title: "AFIP, Mercado Pago, WhatsApp y Google Calendar",
+    title: "AFIP, Mercado Pago, WhatsApp, Google Calendar y más",
     tag: "Ecosistema",
     read: "Conectado",
   },
@@ -206,7 +206,7 @@ export default function Home() {
         <section id="work" className="work-section section-grid section-pad" aria-labelledby="work-title">
           <div className="section-side">
             <p className="section-number">01</p>
-            <p className="side-caption">Proyectos principales<br />Producto y operación</p>
+            <p className="side-caption">Mis proyectos</p>
           </div>
           <div className="section-content">
             <div className="section-heading">
@@ -278,7 +278,7 @@ export default function Home() {
         <section id="writing" className="writing-section section-grid section-pad" aria-labelledby="writing-title">
           <div className="section-side">
             <p className="section-number">03</p>
-            <p className="side-caption">Forma de trabajo<br />De punta a punta.</p>
+            <p className="side-caption">Notas de trabajo</p>
           </div>
           <div className="section-content">
             <div className="section-heading writing-heading">
