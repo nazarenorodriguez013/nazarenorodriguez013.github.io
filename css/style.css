@@ -200,6 +200,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
+  transform-style: preserve-3d;
 }
 
 .tilt {
@@ -262,7 +263,16 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .card-quiosquito {
   transform: rotateY(240deg) translateZ(220px);
-  background: transparent;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+}
+
+.card-quiosquito .quiosquito-icon { max-width: 42px; max-height: 42px; flex-shrink: 0; }
+
+.card-quiosquito span {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -336,7 +346,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .project-logo-zylos { background: #f4f6f8; }
 
 .project-logo-quiosquito {
-  background: #0e5c3f;
+  background: transparent;
   padding: 0;
 }
 
@@ -374,22 +384,41 @@ ul { list-style: none; margin: 0; padding: 0; }
 .project-steps li { font-size: 0.92rem; }
 .project-steps li::marker { color: var(--accent); font-weight: 700; }
 
-.project-shot {
-  margin: 0 0 22px;
-  max-width: 320px;
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-.project-shot img {
+.project-gallery img {
   width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 10px;
+  border: 1px solid var(--surface-border);
+  background: #f4f6f8;
+}
+
+@media (max-width: 640px) {
+  .project-gallery { grid-template-columns: 1fr 1fr; }
+}
+
+.project-video {
+  width: 100%;
+  max-width: 640px;
   display: block;
   border-radius: 10px;
   border: 1px solid var(--surface-border);
+  background: #000;
+  margin-bottom: 6px;
 }
 
-.project-shot figcaption {
+.project-video-caption {
   font-size: 0.78rem;
   color: var(--text-muted);
-  margin-top: 8px;
+  margin: 0 0 22px;
 }
 
 .project-chips {
