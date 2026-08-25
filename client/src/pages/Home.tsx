@@ -34,6 +34,9 @@ const projects = [
       "SaaS multi-tenant para peluquerías y barberías: turnos, fidelización, caja e inventario, campañas y un bot de WhatsApp para reservas automáticas.",
     tags: ["Multi-tenant", "WhatsApp", "Mercado Pago"],
     image: "/shots/glamdo-dashboard.png",
+    video: "/video/glamdo-demo.webm",
+    videoStart: 25,
+    videoEnd: 42,
     logo: "/logos/glamdo-card.png",
     url: "https://www.glamdo.com.ar",
     accent: "lime",
@@ -47,6 +50,9 @@ const projects = [
       "Punto de venta para kioscos y minoristas con facturación AFIP, stock, vencimientos, proveedores, reportes y operación multi-sucursal.",
     tags: ["Punto de venta", "AFIP", "Multi-sucursal"],
     image: "/shots/quiosquito-pos.png",
+    video: "/video/quiosquito-demo.webm",
+    videoStart: 20,
+    videoEnd: 27,
     logo: "/logos/quiosquito-card.png",
     url: "https://www.quiosquito.com.ar",
     accent: "slate",
@@ -60,6 +66,9 @@ const projects = [
       "Sistema multiempresa para ventas, caja, clientes, proveedores, cuentas corrientes y facturación electrónica; incorpora app móvil y asistente con IA.",
     tags: ["Multi-tenant", "React Native", "PostgreSQL"],
     image: "/shots/zylos-stock.png",
+    video: "/video/zylos-demo.webm",
+    videoStart: 15,
+    videoEnd: 23,
     logo: "/logos/zylos.png",
     url: "https://github.com/nazarenorodriguez013",
     accent: "line",
@@ -158,6 +167,23 @@ export default function Home() {
   const notasRef = useRef<HTMLDivElement>(null);
   const [skillsVisible, setSkillsVisible] = useState(false);
   const [notasVisible, setNotasVisible] = useState(false);
+
+  const projectVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const playProjectVideo = (index: number) => {
+    const video = projectVideoRefs.current[index];
+    if (!video) return;
+    video.currentTime = projects[index].videoStart;
+    video.play().catch(() => {});
+  };
+  const pauseProjectVideo = (index: number) => {
+    projectVideoRefs.current[index]?.pause();
+  };
+  const loopProjectVideo = (index: number) => {
+    const video = projectVideoRefs.current[index];
+    if (video && video.currentTime >= projects[index].videoEnd) {
+      video.currentTime = projects[index].videoStart;
+    }
+  };
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") {
@@ -285,9 +311,26 @@ export default function Home() {
             </div>
             <div className="projects-grid">
               {projects.map((project, index) => (
-                <article key={project.title} className={`project-card project-${index + 1}`}>
+                <article
+                  key={project.title}
+                  className={`project-card project-${index + 1}`}
+                  onMouseEnter={() => playProjectVideo(index)}
+                  onMouseLeave={() => pauseProjectVideo(index)}
+                >
                   <div className="project-visual">
                     <img src={project.image} alt="" />
+                    <video
+                      ref={(el) => {
+                        projectVideoRefs.current[index] = el;
+                      }}
+                      className="project-video"
+                      src={project.video}
+                      muted
+                      playsInline
+                      preload="none"
+                      onTimeUpdate={() => loopProjectVideo(index)}
+                      aria-hidden="true"
+                    />
                     <span className="project-id">{project.id}</span>
                     <span className="project-type">{project.type}</span>
                     <img className="project-logo-badge" src={project.logo} alt={`Logo de ${project.title}`} />
