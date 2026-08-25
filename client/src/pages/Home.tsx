@@ -373,9 +373,9 @@ export default function Home() {
                   </div>
                 </fieldset>
               ))}
+              <label>Contexto<textarea required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." /></label>
               <label>Nombre<input required name="name" placeholder="Cómo te llamas" /></label>
               <label>Email<input required type="email" name="email" placeholder="tu@equipo.com" /></label>
-              <label>Contexto<textarea required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." /></label>
               <button className="primary-action form-action" type="submit">
                 Escribir a Nazareno <ArrowUpRight size={18} />
               </button>
