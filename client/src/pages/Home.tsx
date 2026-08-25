@@ -101,7 +101,7 @@ const contactQuestions = [
   {
     name: "tipo_proyecto",
     question: "¿Qué tipo de proyecto es?",
-    options: ["Página web", "Sistema de gestión", "Integración o API", "Automatización", "Otro"],
+    options: ["Página web", "Sistema de gestión", "Integración o API", "Automatización"],
   },
   {
     name: "presupuesto",
@@ -110,7 +110,6 @@ const contactQuestions = [
       "Menos de $500.000",
       "$500.000 - $1.500.000",
       "Más de $1.500.000",
-      "Todavía no sé",
       "Prefiero definirlo después",
     ],
   },
@@ -122,7 +121,12 @@ const contactQuestions = [
   {
     name: "punto_partida",
     question: "¿Desde dónde arrancamos?",
-    options: ["Arranco de cero", "Ya tengo algo para mejorar", "Necesito integrar algo existente"],
+    options: [
+      "Arranco de cero",
+      "Ya tengo algo para mejorar",
+      "Necesito integrar algo existente",
+      "Quiero migrar desde otro sistema",
+    ],
   },
 ];
 
@@ -366,6 +370,11 @@ export default function Home() {
               <input type="hidden" name="subject" value="Consulta desde el portafolio" />
               <input type="hidden" name="redirect" value="https://nazarenorodriguez013.github.io/gracias" />
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+              <div className="step-progress-bar" aria-hidden="true">
+                {Array.from({ length: totalSteps }).map((_, i) => (
+                  <span key={i} className={`step-seg${i <= step ? " step-seg-active" : ""}`} />
+                ))}
+              </div>
               <p className="step-progress">Paso {step + 1} de {totalSteps}</p>
               {contactQuestions.map((q, qi) => (
                 <fieldset
