@@ -20,10 +20,10 @@ import {
 
 // Clave gratuita de https://web3forms.com — pegar acá antes de publicar
 // para que el formulario de contacto envíe mensajes de verdad.
-const WEB3FORMS_ACCESS_KEY = "TU_ACCESS_KEY_DE_WEB3FORMS";
+const WEB3FORMS_ACCESS_KEY = "cd152f45-44b8-46e1-ab7e-d1bc757c46cb";
 
 // Número de WhatsApp con código de país, sin espacios ni signos (ej. 5493451234567).
-const WHATSAPP_NUMBER = "TU_NUMERO_DE_WHATSAPP";
+const WHATSAPP_NUMBER = "5493442535341";
 
 const projects = [
   {
