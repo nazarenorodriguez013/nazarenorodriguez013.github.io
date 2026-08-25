@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 76" role="img" aria-label="Monograma NR">
-  <rect x="2" y="2" width="144" height="72" rx="8" fill="#0a0c0b" stroke="#b6ff3b" stroke-width="2"/>
-  <path d="M17 59V17h9l20 25V17h11v42h-9L28 34v25H17Z" fill="#b6ff3b"/>
-  <path d="M68 59V17h24c13 0 21 7 21 18 0 8-4 14-11 17l14 7H99l-13-8H80v8H68Zm12-19h12c6 0 10-3 10-8s-4-8-10-8H80v16Z" fill="#edf5ef"/>
-  <rect x="122" y="17" width="10" height="10" fill="#b6ff3b"/>
-</svg>

@@ -1,6 +1,8 @@
 # Nazareno Rodríguez — Portfolio
 
-Portafolio de **Nazareno Rodríguez**, desarrollador full stack de Concordia, Entre Ríos, Argentina. El sitio presenta los proyectos **Glamdo**, **Quiosquito** y **Zylos ERP**, además de su stack tecnológico y vías de contacto.
+**🔗 Sitio en vivo: [nazarenorodriguez013.github.io](https://nazarenorodriguez013.github.io)**
+
+Portafolio de **Nazareno Rodríguez**, desarrollador full stack de Concordia, Entre Ríos, Argentina. El sitio presenta los proyectos **Glamdo**, **Quiosquito** y **Zylos ERP** con capturas y videos reales de cada uno, además de su stack tecnológico y vías de contacto.
 
 ## Desarrollo local
 

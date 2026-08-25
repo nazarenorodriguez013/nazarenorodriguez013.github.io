@@ -30,6 +30,7 @@ const projects = [
       "SaaS multi-tenant para peluquerías y barberías: turnos, fidelización, caja e inventario, campañas y un bot de WhatsApp para reservas automáticas.",
     tags: ["Multi-tenant", "WhatsApp", "Mercado Pago"],
     image: "/shots/glamdo-dashboard.png",
+    logo: "/logos/glamdo-card.png",
     url: "https://www.glamdo.com.ar",
     accent: "lime",
     stats: ["Google Calendar", "Node.js + React"],
@@ -42,6 +43,7 @@ const projects = [
       "Punto de venta para kioscos y minoristas con facturación AFIP, stock, vencimientos, proveedores, reportes y operación multi-sucursal.",
     tags: ["Punto de venta", "AFIP", "Multi-sucursal"],
     image: "/shots/quiosquito-pos.png",
+    logo: "/logos/quiosquito-card.png",
     url: "https://www.quiosquito.com.ar",
     accent: "slate",
     stats: ["Web + escritorio", "Mercado Pago"],
@@ -54,6 +56,7 @@ const projects = [
       "Sistema multiempresa para ventas, caja, clientes, proveedores, cuentas corrientes y facturación electrónica; incorpora app móvil y asistente con IA.",
     tags: ["Multi-tenant", "React Native", "PostgreSQL"],
     image: "/shots/zylos-stock.png",
+    logo: "/logos/zylos.png",
     url: "https://github.com/nazarenorodriguez013",
     accent: "line",
     stats: ["App móvil", "Asistente IA"],
@@ -234,6 +237,7 @@ export default function Home() {
                     <img src={project.image} alt="" />
                     <span className="project-id">{project.id}</span>
                     <span className="project-type">{project.type}</span>
+                    <img className="project-logo-badge" src={project.logo} alt={`Logo de ${project.title}`} />
                   </div>
                   <div className="project-info">
                     <div>
