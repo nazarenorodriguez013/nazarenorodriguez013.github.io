@@ -13,4 +13,8 @@ Para validar los tipos, ejecutar `pnpm check`. Para preparar una compilación de
 
 ## Stack
 
-React, TypeScript, Vite y Tailwind CSS. Los recursos visuales se alojan fuera del repositorio y se sirven desde rutas administradas del proyecto.
+React, TypeScript, Vite y Tailwind CSS. Las imágenes y videos (logos, capturas y demos reales de cada proyecto) viven en `client/public/` y se sirven directamente desde el sitio.
+
+## Despliegue
+
+El push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio y lo publica en GitHub Pages vía GitHub Actions. En **Settings → Pages** de este repo, la fuente debe estar configurada como **GitHub Actions** (no "Deploy from a branch").

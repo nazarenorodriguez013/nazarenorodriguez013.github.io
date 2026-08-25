@@ -84,7 +84,27 @@ h1 em, h2 em { color: var(--acid); font-style: normal; }
 .primary-action { padding: 14px 17px; border: 1px solid var(--acid); background: var(--acid); color: var(--ink); font-weight: 500; transition: transform .16s var(--ease-out), background .16s var(--ease-out), box-shadow .16s var(--ease-out); }
 .primary-action:hover { background: #d0ff85; box-shadow: 0 0 30px rgba(182,255,59,.16); transform: translateY(-2px); }.primary-action:active { transform: scale(.97); }
 .text-action { color: var(--soft); transition: color .18s var(--ease-out); }.text-action:hover { color: var(--acid); }
-.hero-art { position: absolute; z-index: 1; top: 0; right: -2%; width: min(69vw, 1010px); height: 100%; overflow: hidden; }.hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .96; mix-blend-mode: screen; }.hero-art::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, var(--ink) 0%, rgba(10,12,11,.91) 8%, rgba(10,12,11,.14) 42%, rgba(10,12,11,.02) 100%), linear-gradient(0deg, var(--ink) 0%, transparent 25%); }
+.hero-art { position: absolute; z-index: 1; top: 0; right: -2%; width: min(69vw, 1010px); height: 100%; overflow: hidden; }.hero-art::after { position: absolute; inset: 0; z-index: 4; content: ""; pointer-events: none; background: linear-gradient(90deg, var(--ink) 0%, rgba(10,12,11,.91) 8%, rgba(10,12,11,.14) 42%, rgba(10,12,11,.02) 100%), linear-gradient(0deg, var(--ink) 0%, transparent 25%); }
+
+/* Hero 3D stage */
+.hero-3d-stage { position: absolute; inset: 0; perspective: 1500px; }
+.hero-3d-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.hero-3d-particle { position: absolute; bottom: -10px; border-radius: 50%; background: var(--acid); animation: hero3d-drift linear infinite; }
+@keyframes hero3d-drift { from { transform: translateY(0) scale(1); opacity: 0; } 10% { opacity: var(--p-op, .4); } 90% { opacity: var(--p-op, .4); } to { transform: translateY(-480px) scale(.6); opacity: 0; } }
+.hero-3d-tilt { position: absolute; top: 50%; right: 16%; width: 280px; height: 280px; margin-top: -140px; transform-style: preserve-3d; transition: transform .2s var(--ease-out); }
+.hero-3d-orbit { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: hero3d-spin 26s linear infinite; }
+@keyframes hero3d-spin { from { transform: rotateY(0deg) rotateX(6deg); } to { transform: rotateY(360deg) rotateX(6deg); } }
+.hero-3d-card { position: absolute; top: 50%; left: 50%; width: 190px; height: 118px; margin: -59px 0 0 -95px; border-radius: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; backface-visibility: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.55); }
+.hero-3d-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.card-glamdo { transform: rotateY(0deg) translateZ(230px); background: var(--card); border: 1px solid var(--border); }
+.card-glamdo img { max-width: 42px; max-height: 42px; flex-shrink: 0; }
+.card-glamdo span { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--foreground); }
+.card-quiosquito { transform: rotateY(120deg) translateZ(230px); background: var(--card); border: 1px solid var(--border); }
+.card-quiosquito img { max-width: 42px; max-height: 42px; flex-shrink: 0; }
+.card-quiosquito span { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--foreground); }
+.card-zylos { transform: rotateY(240deg) translateZ(230px); background: #f4f6f8; padding: 14px; }
+@media (prefers-reduced-motion: reduce) { .hero-3d-orbit { animation: none; transform: rotateY(28deg) rotateX(6deg); } .hero-3d-particle { animation: none; opacity: 0; } }
+@media (max-width: 980px) { .hero-3d-tilt { right: 50%; margin-right: -140px; } }
 .hero-art-label { position: absolute; z-index: 3; top: 88px; right: 8%; color: #cbd2cd; }.hero-art-label::after { display: inline-block; width: 44px; height: 1px; margin-left: 11px; vertical-align: middle; background: var(--acid); content: ""; }
 .hero-art-meta { position: absolute; z-index: 3; right: 8%; bottom: 38px; display: flex; gap: 18px; color: #92a097; }.hero-art-meta span + span { padding-left: 18px; border-left: 1px solid rgba(206,220,210,.25); }
 .hero-orbit { position: absolute; z-index: 2; width: 440px; height: 180px; border: 1px solid rgba(182,255,59,.22); border-radius: 50%; transform: rotate(-25deg); }.orbit-one { top: 25%; right: 13%; }.orbit-two { top: 29%; right: 3%; width: 530px; height: 225px; border-color: rgba(182,255,59,.09); }
