@@ -88,6 +88,7 @@ h1 em, h2 em { color: var(--acid); font-style: normal; }
 
 /* Hero 3D: el símbolo NR es literal, legible y funciona como ancla de marca. */
 .nr-hero-stage { position: absolute; inset: 0; overflow: hidden; perspective: 1500px; }
+.nr-hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center right; filter: contrast(1.03) saturate(.94); }
 .nr-hero-grid { position: absolute; inset: 0; opacity: .42; background-image: linear-gradient(rgba(182,255,59,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(182,255,59,.10) 1px, transparent 1px); background-size: 42px 42px; transform: perspective(600px) rotateX(61deg) scale(1.75) translateY(16%); transform-origin: bottom center; }
 .nr-monogram-scene { position: absolute; top: 50%; right: clamp(8%, 14vw, 18%); width: min(39vw, 510px); aspect-ratio: 1.48; transform-style: preserve-3d; transform: translateY(-53%) rotateY(-17deg) rotateX(7deg); animation: nr-monogram-float 6s var(--ease-in-out) infinite alternate; }
 .nr-monogram-shadow { position: absolute; inset: 17% 5% -10%; background: radial-gradient(ellipse, rgba(182,255,59,.23), rgba(0,0,0,0) 65%); filter: blur(19px); transform: translateZ(-55px) rotateX(73deg); }

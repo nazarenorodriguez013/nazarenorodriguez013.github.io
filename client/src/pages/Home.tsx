@@ -93,16 +93,7 @@ const workflow = [
 function Hero3D() {
   return (
     <div className="nr-hero-stage" aria-hidden="true">
-      <div className="nr-hero-grid" />
-      <div className="nr-monogram-scene">
-        <div className="nr-monogram-shadow" />
-        <div className="nr-monogram-panel">
-          <img src="/logos/nr-mark.svg" alt="" />
-          <span className="nr-monogram-caption">N · R</span>
-        </div>
-        <div className="nr-monogram-edge" />
-        <span className="nr-scene-label">PERSONAL MARK</span>
-      </div>
+      <img className="nr-hero-image" src="/hero/nazareno-nr-3d.png" alt="" />
     </div>
   );
 }
@@ -204,12 +195,12 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art reveal-art">
-            <div className="hero-art-label label-top">// selected object</div>
+            <div className="hero-art-label label-top">// personal mark</div>
             <Hero3D />
             <div className="hero-orbit orbit-one" />
             <div className="hero-orbit orbit-two" />
             <div className="hero-art-meta">
-              <span>RENDER_01</span><span>NR / SYSTEMS</span><span>2026</span>
+              <span>RENDER_01</span><span>NR / PERSONAL MARK</span><span>2026</span>
             </div>
           </div>
           <div className="tech-strip reveal-up">
