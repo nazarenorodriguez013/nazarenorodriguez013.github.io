@@ -198,7 +198,6 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art reveal-art">
-            <div className="hero-art-label label-top">// personal mark</div>
             <Hero3D />
             <div className="hero-orbit orbit-one" />
             <div className="hero-orbit orbit-two" />
@@ -225,10 +224,9 @@ export default function Home() {
           <div className="section-content">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">// shipped products</p>
-                <h2 id="work-title">Sistemas que<br /><em>mueven negocios.</em></h2>
+                <h2 id="work-title">Softwares de<br /><em>Gestión Comercial</em></h2>
               </div>
-              <p className="heading-note">Productos completos que conectan operación, facturación, datos e interfaces para negocios reales.</p>
+              <p className="heading-note">Sistemas completos, facturación electrónica ARCA, inventario, datos e interfaces simples para tener tu negocio bajo control.</p>
             </div>
             <div className="projects-grid">
               {projects.map((project, index) => (
@@ -262,12 +260,11 @@ export default function Home() {
         <section id="skills" className="skills-section section-grid section-pad" aria-labelledby="skills-title">
           <div className="section-side">
             <p className="section-number">02</p>
-            <p className="side-caption">Stack tecnológico<br />Para producto real.</p>
+            <p className="side-caption">Stack tecnológico</p>
           </div>
           <div className="section-content skills-content">
             <div className="section-heading compact-heading">
               <div>
-                <p className="eyebrow">// technical range</p>
                 <h2 id="skills-title">Tecnología para<br /><em>hacer que opere.</em></h2>
               </div>
               <div className="skills-pullquote"><Terminal size={18} /><span>“Del punto de venta a la facturación: un sistema que acompaña la operación.”</span></div>
