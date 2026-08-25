@@ -117,7 +117,6 @@ function NavLink({ href, children }: { href: string; children: string }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const copyEmail = async () => {
     await navigator.clipboard?.writeText("nazarenorodriguez013@gmail.com");
@@ -132,31 +131,6 @@ export default function Home() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     "Hola Nazareno, te escribo porque...",
   )}`;
-
-  const handleContact = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setFormStatus("sending");
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    data.append("access_key", WEB3FORMS_ACCESS_KEY);
-    data.append("subject", `Consulta desde el portafolio — ${data.get("name")}`);
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
-      });
-      const result = await res.json();
-      if (result.success) {
-        setFormStatus("sent");
-        form.reset();
-      } else {
-        setFormStatus("error");
-      }
-    } catch {
-      setFormStatus("error");
-    }
-  };
 
   return (
     <div className="site-shell">
@@ -355,15 +329,17 @@ export default function Home() {
                 <a className="contact-alt-action" href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={15} /> WhatsApp</a>
               </div>
             </div>
-            <form className="contact-form" onSubmit={handleContact}>
+            <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+              <input type="hidden" name="subject" value="Consulta desde el portafolio" />
+              <input type="hidden" name="redirect" value="https://nazarenorodriguez013.github.io/gracias" />
+              <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
               <label>Nombre<input required name="name" placeholder="Cómo te llamas" /></label>
               <label>Email<input required type="email" name="email" placeholder="tu@equipo.com" /></label>
               <label>Contexto<textarea required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." /></label>
-              <button className="primary-action form-action" type="submit" disabled={formStatus === "sending"}>
-                {formStatus === "sending" ? "Enviando..." : "Escribir a Nazareno"} <ArrowUpRight size={18} />
+              <button className="primary-action form-action" type="submit">
+                Escribir a Nazareno <ArrowUpRight size={18} />
               </button>
-              {formStatus === "sent" && <p className="form-status form-status-ok">Mensaje enviado, te respondo pronto.</p>}
-              {formStatus === "error" && <p className="form-status form-status-error">No se pudo enviar. Probá por Gmail, WhatsApp o copiando el mail.</p>}
             </form>
           </div>
           <div className="footer-bottom">

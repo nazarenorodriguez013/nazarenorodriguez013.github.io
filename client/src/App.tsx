@@ -1,6 +1,7 @@
 /** Estilo Terminal de autor: tema oscuro fijo para preservar el contraste sobre la portada 3D. */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Gracias from "@/pages/Gracias";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -11,6 +12,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/gracias" component={Gracias} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
