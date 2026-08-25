@@ -2,7 +2,7 @@
  * Estilo Terminal de autor: composición editorial oscura, rail técnico y verde señal
  * como indicador semántico. La portada 3D debe respirar a la derecha y el texto no se centra.
  */
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -140,6 +140,9 @@ function NavLink({ href, children }: { href: string; children: string }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [step, setStep] = useState(0);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const totalSteps = contactQuestions.length + 2;
 
   const copyEmail = async () => {
     await navigator.clipboard?.writeText("nazarenorodriguez013@gmail.com");
@@ -357,28 +360,80 @@ export default function Home() {
               <input type="hidden" name="subject" value="Consulta desde el portafolio" />
               <input type="hidden" name="redirect" value="https://nazarenorodriguez013.github.io/gracias" />
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-              {contactQuestions.map((q) => (
-                <fieldset className="chip-field" key={q.name}>
+              <p className="step-progress">Paso {step + 1} de {totalSteps}</p>
+              {contactQuestions.map((q, qi) => (
+                <fieldset
+                  className="chip-field form-step"
+                  key={q.name}
+                  style={{ display: step === qi ? undefined : "none" }}
+                >
                   <legend>{q.question}</legend>
                   <div className="chip-group">
-                    {q.options.map((opt, i) => {
-                      const id = `${q.name}-${i}`;
+                    {q.options.map((opt, oi) => {
+                      const id = `${q.name}-${oi}`;
                       return (
                         <div className="chip" key={opt}>
-                          <input type="radio" id={id} name={q.name} value={opt} />
+                          <input
+                            type="radio"
+                            id={id}
+                            name={q.name}
+                            value={opt}
+                            onChange={() =>
+                              window.setTimeout(() => setStep((s) => Math.min(s + 1, totalSteps - 1)), 220)
+                            }
+                          />
                           <label htmlFor={id}>{opt}</label>
                         </div>
                       );
                     })}
                   </div>
+                  <div className="step-nav">
+                    {qi > 0 && (
+                      <button type="button" className="step-back" onClick={() => setStep(qi - 1)}>
+                        ← Atrás
+                      </button>
+                    )}
+                    <button type="button" className="step-skip" onClick={() => setStep(qi + 1)}>
+                      Siguiente
+                    </button>
+                  </div>
                 </fieldset>
               ))}
-              <label>Contexto<textarea required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." /></label>
-              <label>Nombre<input required name="name" placeholder="Cómo te llamas" /></label>
-              <label>Email<input required type="email" name="email" placeholder="tu@equipo.com" /></label>
-              <button className="primary-action form-action" type="submit">
-                Escribir a Nazareno <ArrowUpRight size={18} />
-              </button>
+              <div className="form-step" style={{ display: step === contactQuestions.length ? undefined : "none" }}>
+                <label>
+                  Contexto
+                  <textarea ref={messageRef} required name="message" rows={4} placeholder="Cuéntame qué estás construyendo." />
+                </label>
+                <div className="step-nav">
+                  <button type="button" className="step-back" onClick={() => setStep(contactQuestions.length - 1)}>
+                    ← Atrás
+                  </button>
+                  <button
+                    type="button"
+                    className="step-skip"
+                    onClick={() => {
+                      if (messageRef.current?.reportValidity()) setStep(contactQuestions.length + 1);
+                    }}
+                  >
+                    Siguiente
+                  </button>
+                </div>
+              </div>
+              <div
+                className="form-step"
+                style={{ display: step === contactQuestions.length + 1 ? undefined : "none" }}
+              >
+                <label>Nombre<input required name="name" placeholder="Cómo te llamas" /></label>
+                <label>Email<input required type="email" name="email" placeholder="tu@equipo.com" /></label>
+                <div className="step-nav">
+                  <button type="button" className="step-back" onClick={() => setStep(contactQuestions.length)}>
+                    ← Atrás
+                  </button>
+                  <button className="primary-action form-action" type="submit">
+                    Escribir a Nazareno <ArrowUpRight size={18} />
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
           <div className="footer-bottom">
