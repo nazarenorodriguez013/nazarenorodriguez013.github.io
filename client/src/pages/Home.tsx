@@ -267,7 +267,7 @@ export default function Home() {
               ))}
             </div>
             <div className="stack-cluster">
-              <div className="stack-caption"><Layers3 size={17} /> En la rotación</div>
+              <div className="stack-caption"><Layers3 size={17} /> Las más habituales</div>
               <div className="stack-items"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>MySQL</span><span>Docker</span><span>Linux</span><span>C#</span></div>
             </div>
           </div>
