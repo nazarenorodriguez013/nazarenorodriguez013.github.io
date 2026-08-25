@@ -82,7 +82,7 @@ const workflow = [
     read: "Conectado",
   },
   {
-    date: "Plataformas",
+    date: "Entrega",
     title: "Interfaces web, apps móviles y software de escritorio",
     tag: "Entrega",
     read: "Multi-superficie",
@@ -289,13 +289,12 @@ export default function Home() {
               <div className="writing-route"><span>BUILD_LOG / NR</span><a href="https://github.com/nazarenorodriguez013" target="_blank" rel="noreferrer" className="subtle-action">Ver perfil GitHub <ArrowUpRight size={15} /></a></div>
             </div>
             <div className="article-list">
-              {workflow.map((article, index) => (
+              {workflow.map((article) => (
                 <div className="article-row" key={article.title}>
-                  <span className="article-count">0{index + 1}</span>
+                  <span className="article-count">{article.date}</span>
                   <p className="article-title">{article.title}</p>
                   <span className="article-tag">{article.tag}</span>
                   <span className="article-meta">{article.read}</span>
-                  <span className="article-date">{article.date}</span>
                 </div>
               ))}
             </div>
