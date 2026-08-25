@@ -2,7 +2,7 @@
  * Estilo Terminal de autor: composición editorial oscura, rail técnico y verde señal
  * como indicador semántico. La portada 3D debe respirar a la derecha y el texto no se centra.
  */
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -154,6 +154,32 @@ export default function Home() {
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const totalSteps = contactQuestions.length + 2;
 
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const notasRef = useRef<HTMLDivElement>(null);
+  const [skillsVisible, setSkillsVisible] = useState(false);
+  const [notasVisible, setNotasVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      setSkillsVisible(true);
+      setNotasVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          if (entry.target === skillsRef.current) setSkillsVisible(true);
+          if (entry.target === notasRef.current) setNotasVisible(true);
+        });
+      },
+      { threshold: 0.25 },
+    );
+    if (skillsRef.current) observer.observe(skillsRef.current);
+    if (notasRef.current) observer.observe(notasRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const copyEmail = async () => {
     await navigator.clipboard?.writeText("nazarenorodriguez013@gmail.com");
     setCopied(true);
@@ -299,12 +325,16 @@ export default function Home() {
               </div>
               <div className="skills-pullquote"><Terminal size={18} /><span>“Conectando distintas tecnologías según la necesidad de cada cliente.”</span></div>
             </div>
-            <div className="skill-matrix">
+            <div className="skill-matrix" ref={skillsRef}>
               {skills.map((skill, index) => (
-                <div className="skill-row" key={skill.label}>
+                <div
+                  className={`skill-row reveal-row${skillsVisible ? " is-visible" : ""}`}
+                  style={{ transitionDelay: `${index * 60}ms` }}
+                  key={skill.label}
+                >
                   <span className="skill-count">0{index + 1}</span>
                   <div className="skill-name"><strong>{skill.label}</strong><span>{skill.note}</span></div>
-                  <div className="skill-meter" aria-label={`${skill.label}: ${skill.value}%`}><span style={{ width: `${skill.value}%` }} /></div>
+                  <div className="skill-meter" aria-label={`${skill.label}: ${skill.value}%`}><span style={{ width: skillsVisible ? `${skill.value}%` : "0%" }} /></div>
                   <span className="skill-value">{skill.value}%</span>
                 </div>
               ))}
@@ -329,9 +359,13 @@ export default function Home() {
               </div>
               <div className="writing-route"><span>BUILD_LOG / NR</span><a href="https://github.com/nazarenorodriguez013" target="_blank" rel="noreferrer" className="subtle-action">Ver perfil GitHub <ArrowUpRight size={15} /></a></div>
             </div>
-            <div className="article-list">
-              {workflow.map((article) => (
-                <div className="article-row" key={article.title}>
+            <div className="article-list" ref={notasRef}>
+              {workflow.map((article, index) => (
+                <div
+                  className={`article-row reveal-row${notasVisible ? " is-visible" : ""}`}
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                  key={article.title}
+                >
                   <span className="article-count">{article.date}</span>
                   <p className="article-title">{article.title}</p>
                   <span className="article-tag">{article.tag}</span>
