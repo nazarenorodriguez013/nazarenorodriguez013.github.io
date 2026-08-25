@@ -252,7 +252,7 @@ export default function Home() {
           <div className="section-content skills-content">
             <div className="section-heading compact-heading">
               <div>
-                <h2 id="skills-title">Tecnologías más<br /><em>utilizadas para el desarrollo.</em></h2>
+                <h2 id="skills-title">Herramientas más<br /><em>utilizadas para el desarrollo.</em></h2>
               </div>
               <div className="skills-pullquote"><Terminal size={18} /><span>“Conectando distintas tecnologías según la necesidad de cada cliente.”</span></div>
             </div>
