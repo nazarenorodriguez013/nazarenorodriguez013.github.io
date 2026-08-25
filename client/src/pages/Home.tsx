@@ -281,8 +281,8 @@ export default function Home() {
           <div className="section-content">
             <div className="section-heading writing-heading">
               <div>
-                <p className="eyebrow">// approach</p>
-                <h2 id="writing-title">De la idea<br /><em>a la operación.</em></h2>
+                <p className="eyebrow">// notas</p>
+                <h2 id="writing-title">Producto, integraciones<br /><em>y entrega.</em></h2>
               </div>
               <div className="writing-route"><span>BUILD_LOG / NR</span><a href="https://github.com/nazarenorodriguez013" target="_blank" rel="noreferrer" className="subtle-action">Ver perfil GitHub <ArrowUpRight size={15} /></a></div>
             </div>
