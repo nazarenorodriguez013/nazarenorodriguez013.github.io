@@ -58,13 +58,15 @@ const projects = [
     title: "Zylos ERP",
     type: "ERP para distribuidoras y pymes",
     description:
-      "Sistema multiempresa para ventas, caja, clientes, proveedores, cuentas corrientes y facturación electrónica; incorpora app móvil y asistente con IA.",
+      "Sistema multiempresa para ventas, caja, clientes, proveedores, cuentas corrientes y facturación electrónica; incorpora app móvil y logística de repartos.",
     tags: ["Multi-tenant", "React Native", "PostgreSQL"],
     image: "/shots/zylos-stock.png",
     logo: "/logos/zylos.png",
     url: "https://github.com/nazarenorodriguez013",
     accent: "line",
-    stats: ["App móvil", "Asistente IA"],
+    stats: ["App móvil", "Logística y repartos"],
+    logoFit: "contain" as const,
+    labelColor: "#121212",
   },
 ];
 
@@ -289,10 +291,16 @@ export default function Home() {
                 <article key={project.title} className={`project-card project-${index + 1}`}>
                   <div className="project-visual">
                     <div className="project-logo-display">
-                      <img src={project.logo} alt={`Logo de ${project.title}`} />
+                      <img
+                        src={project.logo}
+                        alt={`Logo de ${project.title}`}
+                        style={project.logoFit ? { objectFit: project.logoFit } : undefined}
+                      />
                     </div>
                     <img className="project-photo" src={project.image} alt="" />
-                    <span className="project-type">{project.type}</span>
+                    <span className="project-type" style={project.labelColor ? { color: project.labelColor } : undefined}>
+                      {project.type}
+                    </span>
                   </div>
                   <div className="project-info">
                     <div>
