@@ -28,22 +28,6 @@ const WHATSAPP_NUMBER = "5493442535341";
 const projects = [
   {
     id: "01",
-    title: "Glamdo",
-    type: "SaaS para servicios de belleza",
-    description:
-      "SaaS multi-tenant para peluquerías y barberías: turnos, fidelización, caja e inventario, campañas y un bot de WhatsApp para reservas automáticas.",
-    tags: ["Multi-tenant", "WhatsApp", "Mercado Pago"],
-    image: "/shots/glamdo-dashboard.png",
-    video: "/video/glamdo-demo.webm",
-    videoStart: 25,
-    videoEnd: 42,
-    logo: "/logos/glamdo-card.png",
-    url: "https://www.glamdo.com.ar",
-    accent: "lime",
-    stats: ["Google Calendar", "Node.js + React"],
-  },
-  {
-    id: "02",
     title: "Quiosquito",
     type: "Sistema de gestión minorista",
     description:
@@ -57,6 +41,22 @@ const projects = [
     url: "https://www.quiosquito.com.ar",
     accent: "slate",
     stats: ["Web + escritorio", "Mercado Pago"],
+  },
+  {
+    id: "02",
+    title: "Glamdo",
+    type: "SaaS para servicios de belleza",
+    description:
+      "SaaS multi-tenant para peluquerías y barberías: turnos, fidelización, caja e inventario, campañas y un bot de WhatsApp para reservas automáticas.",
+    tags: ["Multi-tenant", "WhatsApp", "Mercado Pago"],
+    image: "/shots/glamdo-dashboard.png",
+    video: "/video/glamdo-demo.webm",
+    videoStart: 25,
+    videoEnd: 42,
+    logo: "/logos/glamdo-card.png",
+    url: "https://www.glamdo.com.ar",
+    accent: "lime",
+    stats: ["Google Calendar", "Node.js + React"],
   },
   {
     id: "03",
