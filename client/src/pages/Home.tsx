@@ -27,11 +27,14 @@ const WHATSAPP_NUMBER = "5493442535341";
 
 const projects = [
   {
-    id: "01",
     title: "Quiosquito",
     type: "Sistema de gestión para kioscos y drugstores",
-    description:
-      "Sistema de gestión para kioscos, drugstores y comercios minoristas con punto de venta, facturación electrónica ARCA, caja diaria, stock, vencimientos, proveedores, reportes, integración de Mercado Pago y operación multi-sucursal.",
+    description: (
+      <>
+        Sistema de gestión para kioscos, drugstores y comercios minoristas con punto de venta, facturación electrónica ARCA, caja diaria, stock, vencimientos, proveedores, reportes, integración de Mercado Pago y{" "}
+        <strong>operación multi-sucursal.</strong>
+      </>
+    ),
     tags: ["Punto de venta", "AFIP", "Multi-sucursal"],
     image: "/shots/quiosquito-pos.png",
     logo: "/logos/quiosquito-card.png",
@@ -40,7 +43,6 @@ const projects = [
     stats: ["Web + escritorio", "Mercado Pago"],
   },
   {
-    id: "02",
     title: "Glamdo",
     type: "SaaS para peluquerías, barbería y servicios de belleza",
     description:
@@ -53,7 +55,6 @@ const projects = [
     stats: ["Google Calendar", "Node.js + React"],
   },
   {
-    id: "03",
     title: "Zylos ERP",
     type: "ERP para distribuidoras y pymes",
     description:
@@ -291,7 +292,6 @@ export default function Home() {
                       <img src={project.logo} alt={`Logo de ${project.title}`} />
                     </div>
                     <img className="project-photo" src={project.image} alt="" />
-                    <span className="project-id">{project.id}</span>
                     <span className="project-type">{project.type}</span>
                   </div>
                   <div className="project-info">
