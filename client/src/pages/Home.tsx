@@ -31,7 +31,7 @@ const projects = [
     title: "Quiosquito",
     type: "Sistema de gestión minorista",
     description:
-      "Punto de venta para kioscos y minoristas con facturación AFIP, stock, vencimientos, proveedores, reportes y operación multi-sucursal.",
+      "Sistema de gestión para kioscos, drugstores y comercios minoristas con punto de venta, facturación electrónica ARCA, caja diaria, stock, vencimientos, proveedores, reportes, integración de Mercado Pago y operación multi-sucursal.",
     tags: ["Punto de venta", "AFIP", "Multi-sucursal"],
     image: "/shots/quiosquito-pos.png",
     logo: "/logos/quiosquito-card.png",
@@ -44,7 +44,7 @@ const projects = [
     title: "Glamdo",
     type: "SaaS para servicios de belleza",
     description:
-      "SaaS multi-tenant para peluquerías y barberías: turnos, fidelización, caja e inventario, campañas y un bot de WhatsApp para reservas automáticas.",
+      "Software para barberías, manicuras y spas: agenda de turnos, bot de WhatsApp, campañas de marketing, carga de servicios y profesionales, POS e integración de Mercado Pago.",
     tags: ["Multi-tenant", "WhatsApp", "Mercado Pago"],
     image: "/shots/glamdo-dashboard.png",
     logo: "/logos/glamdo-card.png",
