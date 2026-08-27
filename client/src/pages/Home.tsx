@@ -37,6 +37,7 @@ const projects = [
     ),
     tags: ["Punto de venta", "AFIP", "Multi-sucursal"],
     image: "/shots/quiosquito-pos.png",
+    shots: ["/shots/quiosquito-pos.png", "/shots/quiosquito-payments.png", "/shots/quiosquito-stock.png"],
     logo: "/logos/quiosquito-card.png",
     url: "https://www.quiosquito.com.ar",
     accent: "slate",
@@ -161,6 +162,28 @@ export default function Home() {
   const notasRef = useRef<HTMLDivElement>(null);
   const [skillsVisible, setSkillsVisible] = useState(false);
   const [notasVisible, setNotasVisible] = useState(false);
+
+  const [projectShot, setProjectShot] = useState<Record<string, number>>({});
+  const shotIntervals = useRef<Record<string, ReturnType<typeof setInterval>>>({});
+
+  function startProjectShots(title: string, shots: string[]) {
+    if (shots.length <= 1 || shotIntervals.current[title]) return;
+    shotIntervals.current[title] = setInterval(() => {
+      setProjectShot((prev) => ({ ...prev, [title]: ((prev[title] ?? 0) + 1) % shots.length }));
+    }, 1400);
+  }
+
+  function stopProjectShots(title: string) {
+    clearInterval(shotIntervals.current[title]);
+    delete shotIntervals.current[title];
+    setProjectShot((prev) => ({ ...prev, [title]: 0 }));
+  }
+
+  useEffect(() => {
+    return () => {
+      Object.values(shotIntervals.current).forEach(clearInterval);
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") {
@@ -288,7 +311,12 @@ export default function Home() {
             </div>
             <div className="projects-grid">
               {projects.map((project, index) => (
-                <article key={project.title} className={`project-card project-${index + 1}`}>
+                <article
+                  key={project.title}
+                  className={`project-card project-${index + 1}`}
+                  onMouseEnter={() => project.shots && startProjectShots(project.title, project.shots)}
+                  onMouseLeave={() => project.shots && stopProjectShots(project.title)}
+                >
                   <div className="project-visual">
                     <div className="project-logo-display">
                       <img
@@ -297,7 +325,11 @@ export default function Home() {
                         style={project.logoFit ? { objectFit: project.logoFit } : undefined}
                       />
                     </div>
-                    <img className="project-photo" src={project.image} alt="" />
+                    <img
+                      className="project-photo"
+                      src={project.shots ? project.shots[projectShot[project.title] ?? 0] : project.image}
+                      alt=""
+                    />
                     <span className="project-type" style={project.labelColor ? { color: project.labelColor } : undefined}>
                       {project.type}
                     </span>
