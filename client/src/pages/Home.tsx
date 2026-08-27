@@ -37,7 +37,7 @@ const projects = [
     ),
     tags: ["Punto de venta", "AFIP", "Multi-sucursal"],
     image: "/shots/quiosquito-pos.png",
-    shots: ["/shots/quiosquito-pos.png", "/shots/quiosquito-payments.png", "/shots/quiosquito-stock.png"],
+    shots: ["/shots/quiosquito-pos-banner.png", "/shots/quiosquito-payments-banner.png", "/shots/quiosquito-stock-banner.png"],
     logo: "/logos/quiosquito-card.png",
     url: "https://www.quiosquito.com.ar",
     accent: "slate",
