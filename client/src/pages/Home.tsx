@@ -274,9 +274,9 @@ export default function Home() {
           <div className="hero-copy reveal-up">
             <p className="eyebrow"><span className="lime-square" /> Full Stack Developer · Concordia, Entre Ríos, Argentina</p>
             <h1 id="hero-title">
-              Software de gestión<br />
-              para negocios<br />
-              <em>reales.</em>
+              Desarrollo web y<br />
+              software de gestión<br />
+              para <em>negocios.</em>
             </h1>
             <p className="hero-intro">
               Soy Nazareno Rodríguez, desarrollador full stack y estudiante de la Tecnicatura Universitaria en Programación (UTN). Creo ERPs y SaaS completos para la operación diaria.
